@@ -55,7 +55,7 @@ h <- function(theta, x) {
 #
 cost_function <- function(X, y, theta) {
   number_of_rows <- length(y)
-  J <- rep(0, length=m)
+    J <- rep(0, length=m)
 
   for (i in 1:number_of_rows) {
     expected      <- h(theta, X[i, ])
@@ -115,12 +115,10 @@ feature_normalize <- function(X) {
 }
 
 
-h1 <- function(X) {
-  return(334302.063993 + (100087.116006 * X[1, ]) + (3673.548451 * X[2, ]))
-}
-
-return(
-  334302.063993 +
-  (100087.116006 * population) +
-  (100087.116006 * number_of_mcdonalds) +
-  (3673.548451 * number_of_t_stops))
+# h1 <- function(X) {
+#   return(
+#     334302.063993 +
+#     (100087.116006 * population) +
+#     (100087.116006 * number_of_mcdonalds) +
+#     (3673.548451 * number_of_t_stops))
+# }
