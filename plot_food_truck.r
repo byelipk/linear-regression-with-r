@@ -38,7 +38,7 @@ quantile(food_truck_data$profit)
 
 # Boxplots
 #
-# A common visualization of the  ve-number summary is boxplot, also known as a
+# A common visualization of the number summary is boxplot, also known as a
 # box-and-whiskers plot. The boxplot displays the center and spread of a
 # numeric variable in a format that allows you to quickly obtain a sense of the
 # range and skew of a variable or compare it to other variables.

@@ -1,4 +1,6 @@
 training_set = read.csv("data/food-trucks.csv", header=TRUE)
+x <- training_set$population
+y <- training_set$profit
 
 # To describe the task at hand a bit more formally, our goal is, given a
 # training set, to learn a function `h: X -> Y` so that `h(x)` is a good
@@ -26,8 +28,8 @@ training_set = read.csv("data/food-trucks.csv", header=TRUE)
 #
 # See: https://www.desmos.com/calculator/ajwu8ridom
 
-hypothesis <- function(x, theta0, theta1) {
-  return(theta0 + (theta1 * x))
+hypothesis <- function(x1, x2, x3, theta0, theta1, theta2, theta3) {
+  return(theta0 + (theta1 * x1) + (theta2 * x2) + (theta3 * x3))
 }
 
 # A vectorized hypothesis function
@@ -35,10 +37,6 @@ h <- function(theta, x) {
   return(t(theta) %*% x)
 }
 
-x <- training_set$population
-y <- training_set$profit
-
-m = length(y)
 
 # Ok, we know we want the difference between `h(x) - y` to be small. So how can
 # we tell if we're heading in the right direction?
@@ -56,14 +54,18 @@ m = length(y)
 # our hypothesis function to be minimized.
 #
 cost_function <- function(X, y, theta) {
-  m <- length(y)
-  J <- vector(mode="numeric", length=m)
+  number_of_rows <- length(y)
+  J <- rep(0, length=m)
 
-  for (i in 1:m) {
-    J[i] <- (h(theta, X[i, ]) - y[i])^2
+  for (i in 1:number_of_rows) {
+    expected      <- h(theta, X[i, ])
+    actual        <- y[i]
+    squared_error <- (expected - actual)^2
+
+    J[i] <- squared_error
   }
 
-  return((1 / (2 * m)) * sum(J))
+  return((1 / (2 * number_of_rows)) * sum(J))
 }
 
 # Ideally we'd like a piece of software to automatically find the minimized
@@ -111,3 +113,14 @@ feature_normalize <- function(X) {
 
   return(list(Xn = normalized_features, mu = mu, sigma = sigma))
 }
+
+
+h1 <- function(X) {
+  return(334302.063993 + (100087.116006 * X[1, ]) + (3673.548451 * X[2, ]))
+}
+
+return(
+  334302.063993 +
+  (100087.116006 * population) +
+  (100087.116006 * number_of_mcdonalds) +
+  (3673.548451 * number_of_t_stops))
