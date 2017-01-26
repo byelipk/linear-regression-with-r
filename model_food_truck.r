@@ -28,8 +28,10 @@ y <- training_set$profit
 #
 # See: https://www.desmos.com/calculator/ajwu8ridom
 
-hypothesis <- function(x1, x2, x3, theta0, theta1, theta2, theta3) {
-  return(theta0 + (theta1 * x1) + (theta2 * x2) + (theta3 * x3))
+hypothesis <- function(x0, x1, x2, x3, theta0, theta1, theta2, theta3) {
+  # NOTE
+  # x0 is always equal to 1
+  return((theta0 * x0) + (theta1 * x1) + (theta2 * x2) + (theta3 * x3))
 }
 
 # A vectorized hypothesis function
