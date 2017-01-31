@@ -102,12 +102,23 @@ normalEqn <- function(X, y) {
 }
 
 feature_normalize <- function(X) {
-  mu <- colMeans(X)        # Compute mean for each column
-  sigma <- apply(X, 2, sd) # Compute sd for each column
+  # mu    <- colMeans(X)        # Compute mean for each column
+  # sigma <- apply(X, 2, sd)    # Compute sd for each column
+  #
+  # mean_normalization <- (X - mu)
+  #
+  # normalized_features <- t(apply(mean_normalization, 1, '/', sigma))
+  #
+  # return(list(Xn = normalized_features, mu = mu, sigma = sigma))
 
-  mean_normalization <- (X - mu)
+  m <- dim(X)[1]
+  result <- scale(X)
 
-  normalized_features <- t(apply(mean_normalization, 1, '/', sigma))
-
-  return(list(Xn = normalized_features, mu = mu, sigma = sigma))
+  return(
+    list(
+      Xn = result[1:m, ],
+      mu = attr(result, "scaled:center"),
+      sigma = attr(result, "scaled:scale")
+    )
+  )
 }
