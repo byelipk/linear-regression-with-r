@@ -13,6 +13,9 @@ result <- gradient_descent(X, y, theta, alpha, num_iters)
 # %     5.2148
 # %    -0.5733
 
+# Plot the cost function J - it should decrease every iteration
+plot(1:num_iters, result$J, 'l')
+
 v1 <- c(2,7,1,3)
 v2 <- c(1,1,8,7)
 v3 <- c(3,9,1,4)
@@ -30,3 +33,5 @@ result <- gradient_descent(X, y, theta, alpha, num_iters)
 # %    0.23680
 # %    0.56524
 # %    0.31248
+
+plot(1:100, result$J, 'l')
