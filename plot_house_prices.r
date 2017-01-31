@@ -29,6 +29,7 @@ J_hist <- result$J
 mu     <- attr(X3, "scaled:center")
 sigma  <- attr(X3, "scaled:scale")
 
+# Plot the cost function J
 plot(1:iters, J_hist, 'l')
 
 # Get theta using normal equation method
